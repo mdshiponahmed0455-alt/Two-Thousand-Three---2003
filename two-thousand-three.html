@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two Thousand Three (2003)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F6F7F9; --ink:#12203A; --aqua:#1B8FD8; --aqua-d:#0F6DAA; --silver:#D3D8E0; --sun:#FFC933; --white:#fff;
+  --head:'Bricolage Grotesque','Trebuchet MS',Verdana,sans-serif;
+  --body:'Figtree',Verdana,Tahoma,sans-serif;
+  --r:10px;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* header */
+header{background:var(--ink);color:var(--white);position:sticky;top:0;z-index:5}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--head);font-weight:800;font-size:1.25rem;letter-spacing:-.01em}
+.logo span{color:var(--sun)}
+nav{display:flex;gap:22px;align-items:center;font-weight:500}
+nav a:hover{color:var(--sun)}
+.cart{background:var(--aqua);border:0;color:#fff;padding:8px 16px;border-radius:99px;font-weight:600}
+.cart:hover{background:var(--aqua-d)}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--aqua) 0%,var(--aqua-d) 100%);color:#fff;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding-top:64px;padding-bottom:64px}
+.hero h1{font-family:var(--head);font-weight:800;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.05;letter-spacing:-.02em}
+.hero p{margin:18px 0 28px;max-width:46ch;font-size:1.1rem;opacity:.95}
+.btn{display:inline-block;background:var(--sun);color:var(--ink);font-weight:700;padding:14px 26px;border-radius:99px;border:0;box-shadow:inset 0 -3px 0 rgba(0,0,0,.15)}
+.btn:hover{filter:brightness(1.06)}
+.btn.alt{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.7);box-shadow:none;margin-left:10px}
+.big{font-family:var(--head);font-weight:800;font-size:clamp(6rem,20vw,13rem);line-height:.9;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:3px rgba(255,255,255,.85);text-align:right;user-select:none}
+.big b{display:block;font-size:.17em;letter-spacing:0;color:var(--sun);-webkit-text-stroke:0;margin-top:10px}
+
+/* sections */
+section{padding:60px 0}
+h2{font-family:var(--head);font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.01em;margin-bottom:6px}
+.sub{color:#4a5873;margin-bottom:28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px}
+.card{background:var(--white);border:1px solid var(--silver);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.thumb{aspect-ratio:4/3;display:grid;place-items:center;font-family:var(--head);font-weight:800;font-size:2.4rem;color:rgba(255,255,255,.9)}
+.card .in{padding:14px 16px 18px}
+.card h3{font-family:var(--head);font-size:1.1rem}
+.card .price{font-weight:600;color:var(--aqua-d);margin-top:4px}
+.tag{display:inline-block;background:var(--sun);font-size:.78rem;font-weight:700;padding:2px 9px;border-radius:99px;margin-bottom:8px}
+
+.perks{background:var(--white);border-block:1px solid var(--silver)}
+.perks .grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.perks h3{font-family:var(--head);margin-bottom:4px}
+.perks p{color:#4a5873;font-size:.95rem}
+
+.news{background:var(--ink);color:#fff;text-align:center}
+.news form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.news input{padding:13px 18px;border-radius:99px;border:0;min-width:260px;font:inherit}
+.news .btn{cursor:pointer}
+#msg{margin-top:12px;color:var(--sun);min-height:1.5em}
+
+footer{background:#0b1426;color:#a9b4c9;padding:30px 0;font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* product page */
+.crumbs{padding:20px 0 0;font-size:.9rem;color:#4a5873}
+.crumbs a{color:var(--aqua-d);text-decoration:underline}
+.pdp{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:24px 0 50px}
+.gallery .main{aspect-ratio:1/1;border-radius:var(--r);display:grid;place-items:center;font-family:var(--head);font-weight:800;font-size:5rem;color:rgba(255,255,255,.9);border:1px solid var(--silver)}
+.thumbs{display:flex;gap:10px;margin-top:12px}
+.thumbs button{width:72px;height:72px;border-radius:8px;border:2px solid transparent}
+.thumbs button[aria-pressed="true"]{border-color:var(--ink)}
+.info h1{font-family:var(--head);font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.1;letter-spacing:-.02em}
+.info .price{font-size:1.7rem;font-weight:700;color:var(--aqua-d);margin:10px 0}
+.info .desc{max-width:56ch;margin-bottom:20px}
+.label{font-weight:600;margin:16px 0 8px}
+.opts{display:flex;gap:10px;flex-wrap:wrap}
+.sw{width:38px;height:38px;border-radius:50%;border:3px solid var(--white);box-shadow:0 0 0 2px var(--silver)}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ink)}
+.qty{display:inline-flex;border:1px solid var(--silver);border-radius:99px;background:#fff;overflow:hidden}
+.qty button{width:40px;height:40px;border:0;background:transparent;font-size:1.2rem}
+.qty span{min-width:36px;display:grid;place-items:center;font-weight:600}
+.buy{display:flex;gap:12px;align-items:center;margin:22px 0;flex-wrap:wrap}
+.buy .btn{cursor:pointer;padding:14px 34px}
+.stock{color:#1a7a43;font-weight:600;font-size:.95rem}
+.specs{border-top:1px solid var(--silver);margin-top:10px}
+.specs div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--silver);gap:20px}
+.specs dt{color:#4a5873}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:99px;transition:transform .25s;z-index:9}
+.toast.on{transform:translateX(-50%) translateY(0)}
+
+@media (max-width:760px){
+  .hero .wrap,.pdp{grid-template-columns:1fr}
+  .big{text-align:left}
+  nav a.hide{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#home" aria-label="Two Thousand Three, home">Two Thousand Three <span>(2003)</span></a>
+    <nav>
+      <a class="hide" href="#home">Home</a>
+      <a class="hide" href="#shop">Shop</a>
+      <button class="cart" id="cartBtn" aria-label="Cart">Cart (<span id="cartN">0</span>)</button>
+    </nav>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2003–2026 Two Thousand Three. All rights reserved.</span>
+    <span>Support · Shipping · Returns</span>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ---------- Data (change freely) ---------- */
+const CURRENCY = '$';
+const PRODUCTS = [
+  {id:'flip-x1', name:'Flip X1 Phone', price:89, tag:'Bestseller', c:['#1B8FD8','#0F6DAA'], colors:[['Aqua','#1B8FD8'],['Silver','#BFC6D1'],['Pink','#F06FA8']],
+   desc:'A proper clamshell flip phone with a snappy keypad, a bright outer display and a battery that lasts for days. Polyphonic ringtones included.',
+   specs:[['Display','2.2″ colour LCD'],['Battery','Up to 6 days standby'],['Camera','0.3 MP VGA'],['Storage','32 MB + memory slot']]},
+  {id:'snap-300', name:'Snap 300 Digicam', price:129, tag:'New in', c:['#7A8699','#4B566B'], colors:[['Steel','#8A94A6'],['Black','#232B3A']],
+   desc:'A pocket digital camera with a real optical zoom and a tiny flash. Point, shoot, then plug it into your PC.',
+   specs:[['Sensor','3.2 MP CCD'],['Zoom','3× optical'],['Card','SD up to 512 MB'],['Screen','1.5″ LCD']]},
+  {id:'pod-20', name:'Pod 20 MP3 Player', price:75, c:['#FFC933','#E6A800'], colors:[['Sun','#FFC933'],['White','#F2F2F2']],
+   desc:'Carry your whole mixtape in your pocket. Simple wheel controls and a clear display.',
+   specs:[['Storage','20 MB flash (about 8 songs)'],['Battery','10 hours playback'],['Connection','USB 1.1'],['Weight','48 g']]},
+  {id:'disc-2', name:'Disc 2 Portable CD Player', price:59, c:['#F06FA8','#C2457F'], colors:[['Pink','#F06FA8'],['Silver','#BFC6D1']],
+   desc:'Anti-skip protection, a bass boost button and a belt clip. Bring your CD wallet.',
+   specs:[['Skip protection','45 seconds'],['Battery','2 × AA'],['Plays','CD, CD-R, MP3 CD'],['Weight','160 g']]},
+  {id:'pda-lite', name:'Pocket PDA Lite', price:149, c:['#12203A','#2D4372'], colors:[['Navy','#2D4372'],['Silver','#BFC6D1']],
+   desc:'Calendar, contacts and notes in your hand. Comes with a stylus that you will definitely lose.',
+   specs:[['Display','3.5″ touchscreen'],['Memory','32 MB RAM'],['Sync','USB cradle'],['Battery','Up to 12 hours']]},
+  {id:'walk-fm', name:'Walkie Talkie FM Radio', price:35, c:['#2BAE7D','#1B7F5B'], colors:[['Green','#2BAE7D'],['Orange','#F58B3A']],
+   desc:'FM radio with a built-in speaker and a telescopic antenna. Simple, loud and cheerful.',
+   specs:[['Bands','FM / AM'],['Power','2 × AAA'],['Output','Speaker + headphone jack'],['Weight','110 g']]}
+];
+const grad = p => `linear-gradient(135deg,${p.c[0]},${p.c[1]})`;
+const money = n => CURRENCY + n.toFixed(2);
+let cart = 0;
+
+/* ---------- Pages ---------- */
+function card(p){
+  return `<a class="card" href="#p-${p.id}">
+    <div class="thumb" style="background:${grad(p)}">2003</div>
+    <div class="in">${p.tag?`<span class="tag">${p.tag}</span>`:''}<h3>${p.name}</h3><div class="price">${money(p.price)}</div></div>
+  </a>`;
+}
+
+function landing(){
+  return `
+  <div class="hero"><div class="wrap">
+    <div>
+      <h1>Gadgets from the year everything had buttons.</h1>
+      <p>Flip phones, digital cameras and MP3 players, all picked from 2003 and ready for today. Free shipping on orders over ${money(100)}.</p>
+      <a class="btn" href="#shop">Shop the collection</a>
+      <a class="btn alt" href="#p-flip-x1">See the Flip X1</a>
+    </div>
+    <div class="big" aria-hidden="true">2003<b>Est. for nostalgia</b></div>
+  </div></div>
+
+  <section id="shop"><div class="wrap">
+    <h2>Shop the collection</h2>
+    <p class="sub">Six favourites, each in stock and shipping this week.</p>
+    <div class="grid">${PRODUCTS.map(card).join('')}</div>
+  </div></section>
+
+  <div class="perks"><section><div class="wrap grid">
+    <div><h3>Ships in 2 days</h3><p>Every order leaves our warehouse within 48 hours.</p></div>
+    <div><h3>30-day returns</h3><p>Not for you? Send it back for a full refund.</p></div>
+    <div><h3>1-year warranty</h3><p>Every device is tested and covered for a full year.</p></div>
+  </div></section></div>
+
+  <section class="news"><div class="wrap">
+    <h2>Get new arrivals first</h2>
+    <p>One email a week. Unsubscribe any time.</p>
+    <form id="nl"><input type="email" required placeholder="you@example.com" aria-label="Email address"><button class="btn" type="submit">Subscribe</button></form>
+    <div id="msg"></div>
+  </div></section>`;
+}
+
+function product(id){
+  const p = PRODUCTS.find(x => x.id === id);
+  if(!p) return `<div class="wrap"><section><h2>Product not found</h2><p class="sub">Check the link, or <a href="#shop" style="text-decoration:underline">browse the shop</a>.</p></section></div>`;
+  const rel = PRODUCTS.filter(x => x.id !== id).slice(0,3);
+  return `
+  <div class="wrap">
+    <div class="crumbs"><a href="#home">Home</a> / <a href="#shop">Shop</a> / ${p.name}</div>
+    <div class="pdp">
+      <div class="gallery">
+        <div class="main" id="main" style="background:${grad(p)}">2003</div>
+        <div class="thumbs" id="thumbs">
+          ${p.colors.map((c,i)=>`<button aria-label="${c[0]} view" aria-pressed="${i===0}" data-i="${i}" style="background:linear-gradient(135deg,${c[1]},${p.c[1]})"></button>`).join('')}
+        </div>
+      </div>
+      <div class="info">
+        ${p.tag?`<span class="tag">${p.tag}</span>`:''}
+        <h1>${p.name}</h1>
+        <div class="price">${money(p.price)}</div>
+        <p class="desc">${p.desc}</p>
+        <div class="label">Colour: <span id="cname">${p.colors[0][0]}</span></div>
+        <div class="opts" id="opts">
+          ${p.colors.map((c,i)=>`<button class="sw" aria-label="${c[0]}" aria-pressed="${i===0}" data-i="${i}" style="background:${c[1]}"></button>`).join('')}
+        </div>
+        <div class="label">Quantity</div>
+        <div class="qty"><button id="minus" aria-label="Decrease">−</button><span id="q">1</span><button id="plus" aria-label="Increase">+</button></div>
+        <div class="buy"><button class="btn" id="add">Add to cart</button><span class="stock">In stock · ships in 2 days</span></div>
+        <dl class="specs">${p.specs.map(s=>`<div><dt>${s[0]}</dt><dd>${s[1]}</dd></div>`).join('')}</dl>
+      </div>
+    </div>
+    <section style="padding-top:10px"><h2>You might also like</h2><p class="sub">More from the collection.</p><div class="grid">${rel.map(card).join('')}</div></section>
+  </div>`;
+}
+
+/* ---------- Behaviour ---------- */
+const app = document.getElementById('app');
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),2200)}
+
+function bindProduct(id){
+  const p = PRODUCTS.find(x => x.id === id); if(!p) return;
+  let sel = 0, qty = 1;
+  const pick = i => {
+    sel = i;
+    document.getElementById('cname').textContent = p.colors[i][0];
+    document.querySelectorAll('#opts button').forEach(b => b.setAttribute('aria-pressed', +b.dataset.i === i));
+    document.querySelectorAll('#thumbs button').forEach(b => b.setAttribute('aria-pressed', +b.dataset.i === i));
+    document.getElementById('main').style.background = `linear-gradient(135deg,${p.colors[i][1]},${p.c[1]})`;
+  };
+  document.querySelectorAll('#opts button,#thumbs button').forEach(b => b.onclick = () => pick(+b.dataset.i));
+  document.getElementById('minus').onclick = () => { qty = Math.max(1, qty-1); document.getElementById('q').textContent = qty; };
+  document.getElementById('plus').onclick = () => { qty = Math.min(10, qty+1); document.getElementById('q').textContent = qty; };
+  document.getElementById('add').onclick = () => {
+    cart += qty; document.getElementById('cartN').textContent = cart;
+    toast(`Added ${qty} × ${p.name} (${p.colors[sel][0]}) to cart`);
+  };
+}
+
+function route(){
+  const h = location.hash.slice(1) || 'home';
+  if(h.startsWith('p-')){
+    const id = h.slice(2);
+    app.innerHTML = product(id); bindProduct(id); window.scrollTo(0,0);
+    const p = PRODUCTS.find(x => x.id === id);
+    document.title = p ? `${p.name} | Two Thousand Three (2003)` : 'Two Thousand Three (2003)';
+  } else {
+    app.innerHTML = landing(); document.title = 'Two Thousand Three (2003)';
+    document.getElementById('nl').onsubmit = e => { e.preventDefault(); document.getElementById('msg').textContent = 'Thanks! You are on the list.'; e.target.reset(); };
+    if(h === 'shop') document.getElementById('shop').scrollIntoView(); else window.scrollTo(0,0);
+  }
+}
+document.getElementById('cartBtn').onclick = () => toast(cart ? `You have ${cart} item(s) in your cart` : 'Your cart is empty');
+window.addEventListener('hashchange', route);
+route();
+</script>
+</body>
+</html>
